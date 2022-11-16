@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7eabef0f-4783-4b4b-adb9-6d4a5e288523">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     alumno.`ID_ALUM` AS alumno_ID_ALUM,
+     alumno.`ID_USUA` AS alumno_ID_USUA,
+     alumno.`ID_EPS` AS alumno_ID_EPS,
+     alumno.`ID_LUGANACI` AS alumno_ID_LUGANACI,
+     alumno.`1NOM_ALUM` AS alumno_1NOM_ALUM,
+     alumno.`2NOM_ALUM` AS alumno_2NOM_ALUM,
+     alumno.`1APEL_ALUM` AS alumno_1APEL_ALUM,
+     alumno.`2APEL_ALUM` AS alumno_2APEL_ALUM,
+     alumno.`NUIP_ALUM` AS alumno_NUIP_ALUM,
+     alumno.`FECHNACI_ALUM` AS alumno_FECHNACI_ALUM,
+     alumno.`GRUPSANGUI_ALUM` AS alumno_GRUPSANGUI_ALUM,
+     alumno.`NUMHERMA_ALUM` AS alumno_NUMHERMA_ALUM,
+     alumno.`DIREC_ALUM` AS alumno_DIREC_ALUM,
+     alumno.`TELEFIJO_ALUM` AS alumno_TELEFIJO_ALUM,
+     alumno.`TELECELU_ALUM` AS alumno_TELECELU_ALUM,
+     alumno.`ALERG_ALUM` AS alumno_ALERG_ALUM,
+     alumno.`MEDICA_ALUM` AS alumno_MEDICA_ALUM,
+     alumno.`PESO_ALUM` AS alumno_PESO_ALUM,
+     alumno.`ALTURA_ALUM` AS alumno_ALTURA_ALUM,
+     alumno.`ENFERM_ALUM` AS alumno_ENFERM_ALUM,
+     alumno.`DESCENFER_ALUM` AS alumno_DESCENFER_ALUM,
+     alumno.`ESTA_ALUMN` AS alumno_ESTA_ALUMN,
+     eps.`ID_EPS` AS eps_ID_EPS,
+     eps.`NOM_EPS` AS eps_NOM_EPS,
+     familiar.`ID_FAMI` AS familiar_ID_FAMI,
+     familiar.`1NOM_FAMI` AS familiar_1NOM_FAMI,
+     familiar.`2NOM_FAMI` AS familiar_2NOM_FAMI,
+     familiar.`1APEL_FAMI` AS familiar_1APEL_FAMI,
+     familiar.`2APEL_FAMI` AS familiar_2APEL_FAMI,
+     familiar.`PARENT_FAMI` AS familiar_PARENT_FAMI,
+     familiar.`NUMDOCU_FAMI` AS familiar_NUMDOCU_FAMI,
+     familiar.`OCUPAC_FAMI` AS familiar_OCUPAC_FAMI,
+     familiar.`LUGATRAB_FAMI` AS familiar_LUGATRAB_FAMI,
+     familiar.`TELETRAB_FAMI` AS familiar_TELETRAB_FAMI,
+     familiar.`TELECEL_FAMI` AS familiar_TELECEL_FAMI,
+     familiar.`FECHNACI_FAMI` AS familiar_FECHNACI_FAMI,
+     familiar.`ESTA_FAMI` AS familiar_ESTA_FAMI,
+     luganaci.`ID_LUGANACI` AS luganaci_ID_LUGANACI,
+     luganaci.`NOM_LUGANACI` AS luganaci_NOM_LUGANACI,
+     acudientes.`ID_ACUD` AS acudientes_ID_ACUD,
+     acudientes.`ID_ALUM` AS acudientes_ID_ALUM,
+     acudientes.`1NOM_ACUD` AS acudientes_1NOM_ACUD,
+     acudientes.`2NOM_ACUD` AS acudientes_2NOM_ACUD,
+     acudientes.`1APEL_ACUD` AS acudientes_1APEL_ACUD,
+     acudientes.`2APEL_ACUD` AS acudientes_2APEL_ACUD,
+     acudientes.`NUMDOCU_ACUD` AS acudientes_NUMDOCU_ACUD,
+     acudientes.`TELE_ACUD` AS acudientes_TELE_ACUD,
+     acudientes.`DIREC_ACUD` AS acudientes_DIREC_ACUD,
+     acudientes.`ESTADOAUTO_ACUD` AS acudientes_ESTADOAUTO_ACUD,
+     acudientes.`FECHNACI_ACUD` AS acudientes_FECHNACI_ACUD,
+     acudientes.`PARENT_ACUD` AS acudientes_PARENT_ACUD,
+     acudientes.`ESTA_ACUD` AS acudientes_ESTA_ACUD,
+     alumfami.`ID_ALUM` AS alumfami_ID_ALUM,
+     alumfami.`ID_FAMI` AS alumfami_ID_FAMI
+FROM
+     `alumno` alumno INNER JOIN `eps` eps ON alumno.`ID_EPS` = eps.`ID_EPS`
+     INNER JOIN `luganaci` luganaci ON alumno.`ID_LUGANACI` = luganaci.`ID_LUGANACI`
+     INNER JOIN `acudientes` acudientes ON alumno.`ID_ALUM` = acudientes.`ID_ALUM`
+     INNER JOIN `alumfami` alumfami ON alumno.`ID_ALUM` = alumfami.`ID_ALUM`
+     INNER JOIN `familiar` familiar ON alumfami.`ID_FAMI` = familiar.`ID_FAMI`]]>
+	</queryString>
+	<field name="alumno_1NOM_ALUM" class="java.lang.String"/>
+	<field name="alumno_2NOM_ALUM" class="java.lang.String"/>
+	<field name="alumno_1APEL_ALUM" class="java.lang.String"/>
+	<field name="alumno_2APEL_ALUM" class="java.lang.String"/>
+	<field name="alumno_NUIP_ALUM" class="java.lang.Integer"/>
+	<field name="alumno_FECHNACI_ALUM" class="java.sql.Date"/>
+	<field name="alumno_GRUPSANGUI_ALUM" class="java.lang.String"/>
+	<field name="alumno_NUMHERMA_ALUM" class="java.lang.Integer"/>
+	<field name="alumno_DIREC_ALUM" class="java.lang.String"/>
+	<field name="alumno_TELEFIJO_ALUM" class="java.lang.String"/>
+	<field name="alumno_TELECELU_ALUM" class="java.lang.String"/>
+	<field name="alumno_ALERG_ALUM" class="java.lang.String"/>
+	<field name="alumno_MEDICA_ALUM" class="java.lang.String"/>
+	<field name="alumno_PESO_ALUM" class="java.lang.String"/>
+	<field name="alumno_ALTURA_ALUM" class="java.lang.String"/>
+	<field name="alumno_ENFERM_ALUM" class="java.lang.String"/>
+	<field name="alumno_DESCENFER_ALUM" class="java.lang.String"/>
+	<field name="alumno_ESTA_ALUMN" class="java.lang.String"/>
+	<field name="eps_NOM_EPS" class="java.lang.String"/>
+	<field name="familiar_1NOM_FAMI" class="java.lang.String"/>
+	<field name="familiar_2NOM_FAMI" class="java.lang.String"/>
+	<field name="familiar_1APEL_FAMI" class="java.lang.String"/>
+	<field name="familiar_2APEL_FAMI" class="java.lang.String"/>
+	<field name="familiar_PARENT_FAMI" class="java.lang.String"/>
+	<field name="familiar_NUMDOCU_FAMI" class="java.lang.Integer"/>
+	<field name="familiar_OCUPAC_FAMI" class="java.lang.String"/>
+	<field name="familiar_LUGATRAB_FAMI" class="java.lang.String"/>
+	<field name="familiar_TELETRAB_FAMI" class="java.lang.String"/>
+	<field name="familiar_TELECEL_FAMI" class="java.lang.String"/>
+	<field name="familiar_FECHNACI_FAMI" class="java.sql.Date"/>
+	<field name="familiar_ESTA_FAMI" class="java.lang.String"/>
+	<field name="luganaci_NOM_LUGANACI" class="java.lang.String"/>
+	<field name="acudientes_1NOM_ACUD" class="java.lang.String"/>
+	<field name="acudientes_2NOM_ACUD" class="java.lang.String"/>
+	<field name="acudientes_1APEL_ACUD" class="java.lang.String"/>
+	<field name="acudientes_2APEL_ACUD" class="java.lang.String"/>
+	<field name="acudientes_NUMDOCU_ACUD" class="java.lang.Integer"/>
+	<field name="acudientes_TELE_ACUD" class="java.lang.String"/>
+	<field name="acudientes_DIREC_ACUD" class="java.lang.String"/>
+	<field name="acudientes_ESTADOAUTO_ACUD" class="java.lang.String"/>
+	<field name="acudientes_FECHNACI_ACUD" class="java.sql.Date"/>
+	<field name="acudientes_PARENT_ACUD" class="java.lang.String"/>
+	<field name="acudientes_ESTA_ACUD" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="217b7b2e-8b42-41d3-9a2f-12f8c13687a0"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="170" y="0" width="263" height="62" uuid="3c7483c6-36ab-4078-9362-52850ab2878f"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="219" y="62" width="196" height="22" uuid="9e3f3ebd-0472-49fe-ad46-04927c571a39"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="9f275424-2683-484c-8c9f-f05c325473be"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="433" y="-115" width="267" height="209" uuid="762fb5c1-9084-49e0-8273-c3592d10d3ec"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="1f759d89-89f1-40e6-b4a0-25ef553a723d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="12" height="15" forecolor="#736343" uuid="3d0983fe-6294-4373-bea8-eb6ea3bd9d72"/>
+				<text><![CDATA[alumno_1NOM_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="12" y="0" width="12" height="15" forecolor="#736343" uuid="ac695b64-53af-4bec-bc5b-4bb67b1403b2"/>
+				<text><![CDATA[alumno_2NOM_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="24" y="0" width="12" height="15" forecolor="#736343" uuid="10829fde-c294-4b31-ace0-2811ca4b0943"/>
+				<text><![CDATA[alumno_1APEL_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="36" y="0" width="12" height="15" forecolor="#736343" uuid="96dc65a3-3a39-4b17-a45f-18647026f616"/>
+				<text><![CDATA[alumno_2APEL_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="48" y="0" width="12" height="15" forecolor="#736343" uuid="7497b895-427a-463b-8ce0-d456dde08151"/>
+				<text><![CDATA[alumno_NUIP_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="60" y="0" width="12" height="15" forecolor="#736343" uuid="9a65a150-6b4f-4b80-ae5d-1614a3f69f0b"/>
+				<text><![CDATA[alumno_FECHNACI_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="72" y="0" width="12" height="15" forecolor="#736343" uuid="7f161472-0584-4e75-8d63-400b2d68fc3d"/>
+				<text><![CDATA[alumno_GRUPSANGUI_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="84" y="0" width="12" height="15" forecolor="#736343" uuid="39ddecff-9c30-41d4-b3f8-6b89f0d02490"/>
+				<text><![CDATA[alumno_NUMHERMA_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="96" y="0" width="12" height="15" forecolor="#736343" uuid="df6f467e-8905-4306-bb8e-04f83c696b75"/>
+				<text><![CDATA[alumno_DIREC_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="108" y="0" width="12" height="15" forecolor="#736343" uuid="5d653a1f-2b10-47e9-a0ef-7c1f62d3cb66"/>
+				<text><![CDATA[alumno_TELEFIJO_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="120" y="0" width="12" height="15" forecolor="#736343" uuid="89364163-451c-460c-a99a-a6ee4357824e"/>
+				<text><![CDATA[alumno_TELECELU_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="132" y="0" width="12" height="15" forecolor="#736343" uuid="2927c060-aa7e-473f-aa5d-b6ef845e528d"/>
+				<text><![CDATA[alumno_ALERG_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="144" y="0" width="12" height="15" forecolor="#736343" uuid="eba287ad-c184-447a-aac3-1b7271c40a7a"/>
+				<text><![CDATA[alumno_MEDICA_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="156" y="0" width="12" height="15" forecolor="#736343" uuid="f74e2fed-bd2f-4977-9c46-43f4302aff0d"/>
+				<text><![CDATA[alumno_PESO_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="168" y="0" width="12" height="15" forecolor="#736343" uuid="d29f7608-7830-42c9-851d-667c324610af"/>
+				<text><![CDATA[alumno_ALTURA_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="180" y="0" width="12" height="15" forecolor="#736343" uuid="dfab685d-c3f0-4252-b963-fe240aa9b098"/>
+				<text><![CDATA[alumno_ENFERM_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="192" y="0" width="12" height="15" forecolor="#736343" uuid="c8a72078-718f-445e-8343-f69bc6667c3c"/>
+				<text><![CDATA[alumno_DESCENFER_ALUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="204" y="0" width="12" height="15" forecolor="#736343" uuid="fde24ca6-bf33-4183-a9f4-8c3224dc44b4"/>
+				<text><![CDATA[alumno_ESTA_ALUMN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="216" y="0" width="12" height="15" forecolor="#736343" uuid="5259a321-7dc3-4a5f-83b8-00a07ad9157b"/>
+				<text><![CDATA[eps_NOM_EPS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="0" width="12" height="15" forecolor="#736343" uuid="1cbc60e4-8e66-4897-99fb-8f49c9715fdf"/>
+				<text><![CDATA[familiar_1NOM_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="240" y="0" width="12" height="15" forecolor="#736343" uuid="d04faaf6-c46e-467d-86bf-951b2a722b15"/>
+				<text><![CDATA[familiar_2NOM_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="252" y="0" width="12" height="15" forecolor="#736343" uuid="0829831a-4774-48a7-8037-ccd35c5f6d6f"/>
+				<text><![CDATA[familiar_1APEL_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="0" width="12" height="15" forecolor="#736343" uuid="bea41af6-6a3f-44d2-9229-6f4d863f76f3"/>
+				<text><![CDATA[familiar_2APEL_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="0" width="12" height="15" forecolor="#736343" uuid="0e7ae08b-c870-4dfe-bf39-eaeaf8985b75"/>
+				<text><![CDATA[familiar_PARENT_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="288" y="0" width="12" height="15" forecolor="#736343" uuid="206f826e-cabd-4798-88c4-296245cf7a58"/>
+				<text><![CDATA[familiar_NUMDOCU_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="300" y="0" width="12" height="15" forecolor="#736343" uuid="206a48b7-c62b-4fb1-b3cc-4c94ec7f4d91"/>
+				<text><![CDATA[familiar_OCUPAC_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="312" y="0" width="12" height="15" forecolor="#736343" uuid="693d5908-e6ba-40ef-8d35-37f4e59717f0"/>
+				<text><![CDATA[familiar_LUGATRAB_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="324" y="0" width="12" height="15" forecolor="#736343" uuid="0547229b-a47b-459f-b0a2-7fd63622711e"/>
+				<text><![CDATA[familiar_TELETRAB_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="336" y="0" width="12" height="15" forecolor="#736343" uuid="76105e58-e621-42d7-a501-0f8eda4dd7a8"/>
+				<text><![CDATA[familiar_TELECEL_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="348" y="0" width="12" height="15" forecolor="#736343" uuid="646d347e-ee63-4e59-9c73-2be1908209eb"/>
+				<text><![CDATA[familiar_FECHNACI_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="360" y="0" width="12" height="15" forecolor="#736343" uuid="900e2d2b-8d47-43fb-8141-c60bbbb66588"/>
+				<text><![CDATA[familiar_ESTA_FAMI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="372" y="0" width="12" height="15" forecolor="#736343" uuid="983159db-e56d-42ba-83bb-4fd18bfe24fb"/>
+				<text><![CDATA[luganaci_NOM_LUGANACI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="384" y="0" width="12" height="15" forecolor="#736343" uuid="0f0f1023-c3c3-4d61-8a27-e10d55a71cd3"/>
+				<text><![CDATA[acudientes_1NOM_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="396" y="0" width="12" height="15" forecolor="#736343" uuid="dc4d70cf-8430-488c-881c-3cce7105622a"/>
+				<text><![CDATA[acudientes_2NOM_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="408" y="0" width="12" height="15" forecolor="#736343" uuid="54354cce-fa08-486b-98b6-8c709e04334e"/>
+				<text><![CDATA[acudientes_1APEL_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="420" y="0" width="12" height="15" forecolor="#736343" uuid="ea621de9-886c-4ac9-b704-9537556dcd24"/>
+				<text><![CDATA[acudientes_2APEL_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="432" y="0" width="12" height="15" forecolor="#736343" uuid="cba79381-309f-4196-b325-35d3e44c10a6"/>
+				<text><![CDATA[acudientes_NUMDOCU_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="0" width="12" height="15" forecolor="#736343" uuid="b598669c-52a3-41a1-83a7-85597be370d3"/>
+				<text><![CDATA[acudientes_TELE_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="12" height="15" forecolor="#736343" uuid="24a157fb-64d3-41df-80e0-c30a7eab9605"/>
+				<text><![CDATA[acudientes_DIREC_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="468" y="0" width="12" height="15" forecolor="#736343" uuid="6ae94173-a35f-4572-9742-6acff6f40b51"/>
+				<text><![CDATA[acudientes_ESTADOAUTO_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="0" width="12" height="15" forecolor="#736343" uuid="5e649c31-05dd-4243-b135-4cc3120d4ccf"/>
+				<text><![CDATA[acudientes_FECHNACI_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="492" y="0" width="12" height="15" forecolor="#736343" uuid="8be39b20-1949-4c16-bc38-e14bb084d873"/>
+				<text><![CDATA[acudientes_PARENT_ACUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="504" y="0" width="12" height="15" forecolor="#736343" uuid="6b9f1162-be40-4c13-a0ba-1d924d127c6e"/>
+				<text><![CDATA[acudientes_ESTA_ACUD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="8dba6a7e-f2bd-4574-94ce-9bc79f89e673"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="12" height="15" uuid="e291cd64-d526-40bb-98d4-ba65f884bb4a"/>
+					<textFieldExpression><![CDATA[$F{alumno_1NOM_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="12" y="0" width="12" height="15" uuid="8ca5dff9-825c-40f3-8bb3-8842c9cdf47e"/>
+					<textFieldExpression><![CDATA[$F{alumno_2NOM_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="24" y="0" width="12" height="15" uuid="a09cb9ad-94a2-4c43-92e7-7cf281f7245e"/>
+					<textFieldExpression><![CDATA[$F{alumno_1APEL_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="36" y="0" width="12" height="15" uuid="e48516e1-604e-4254-823f-d3bb2e6701d0"/>
+					<textFieldExpression><![CDATA[$F{alumno_2APEL_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="48" y="0" width="12" height="15" uuid="e1ecd5e7-4a31-4e59-94c3-4d2d7fd0ebfe"/>
+					<textFieldExpression><![CDATA[$F{alumno_NUIP_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="60" y="0" width="12" height="15" uuid="07043f18-01c4-415f-9391-0991e2862045"/>
+					<textFieldExpression><![CDATA[$F{alumno_FECHNACI_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="72" y="0" width="12" height="15" uuid="d5f50788-b0fe-4834-ace9-ba09d65235fc"/>
+					<textFieldExpression><![CDATA[$F{alumno_GRUPSANGUI_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="84" y="0" width="12" height="15" uuid="8c374a98-5eed-48c9-9991-a321012f6284"/>
+					<textFieldExpression><![CDATA[$F{alumno_NUMHERMA_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="96" y="0" width="12" height="15" uuid="45dfd925-57c7-40e0-b1c1-412507e78db5"/>
+					<textFieldExpression><![CDATA[$F{alumno_DIREC_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="108" y="0" width="12" height="15" uuid="a4f5d3f7-9c0e-4751-9985-08317c2c7e4b"/>
+					<textFieldExpression><![CDATA[$F{alumno_TELEFIJO_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="120" y="0" width="12" height="15" uuid="f9ca6e5d-2571-457f-b6c7-daa5802948df"/>
+					<textFieldExpression><![CDATA[$F{alumno_TELECELU_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="132" y="0" width="12" height="15" uuid="14ab9930-79d9-4362-9996-4343cff78ff7"/>
+					<textFieldExpression><![CDATA[$F{alumno_ALERG_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="144" y="0" width="12" height="15" uuid="f6400e90-4658-4706-8e0e-34f189567f79"/>
+					<textFieldExpression><![CDATA[$F{alumno_MEDICA_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="156" y="0" width="12" height="15" uuid="6f736a08-e4ed-4640-94be-8c1800c97dba"/>
+					<textFieldExpression><![CDATA[$F{alumno_PESO_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="168" y="0" width="12" height="15" uuid="72482e80-9d8e-43de-89ce-13b75f170b81"/>
+					<textFieldExpression><![CDATA[$F{alumno_ALTURA_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="180" y="0" width="12" height="15" uuid="97601325-91ec-4e07-8583-64c6f19052b5"/>
+					<textFieldExpression><![CDATA[$F{alumno_ENFERM_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="192" y="0" width="12" height="15" uuid="1af0fdb0-f05b-4ba9-8780-0585abe382b6"/>
+					<textFieldExpression><![CDATA[$F{alumno_DESCENFER_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="204" y="0" width="12" height="15" uuid="a30a744c-0d7f-4f38-bd0a-4fd4d010cfab"/>
+					<textFieldExpression><![CDATA[$F{alumno_ESTA_ALUMN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="216" y="0" width="12" height="15" uuid="ac45c0e4-ad93-462e-b47f-f5bfa06d1cff"/>
+					<textFieldExpression><![CDATA[$F{eps_NOM_EPS}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="228" y="0" width="12" height="15" uuid="ca082d2d-cc09-404c-9729-a901844fb8f0"/>
+					<textFieldExpression><![CDATA[$F{familiar_1NOM_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="240" y="0" width="12" height="15" uuid="9db01893-2a1e-4c22-9486-cbc3cdcb5477"/>
+					<textFieldExpression><![CDATA[$F{familiar_2NOM_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="252" y="0" width="12" height="15" uuid="ba533bde-d060-48af-b38e-9e69f43b6f7a"/>
+					<textFieldExpression><![CDATA[$F{familiar_1APEL_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="264" y="0" width="12" height="15" uuid="57992f6e-fdf0-4048-aad4-cc27a9cf001d"/>
+					<textFieldExpression><![CDATA[$F{familiar_2APEL_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="276" y="0" width="12" height="15" uuid="b46d6e37-40a2-48bc-81f3-8e862ca5663e"/>
+					<textFieldExpression><![CDATA[$F{familiar_PARENT_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="288" y="0" width="12" height="15" uuid="3501130a-a1e7-49c6-956f-1ed452dab441"/>
+					<textFieldExpression><![CDATA[$F{familiar_NUMDOCU_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="300" y="0" width="12" height="15" uuid="824c8ce8-8c2e-4843-8d63-468149a0c860"/>
+					<textFieldExpression><![CDATA[$F{familiar_OCUPAC_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="312" y="0" width="12" height="15" uuid="7ce5bd70-26c7-4ba2-93e7-20ce0c810875"/>
+					<textFieldExpression><![CDATA[$F{familiar_LUGATRAB_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="324" y="0" width="12" height="15" uuid="fd45313b-dca0-4d28-b9d3-92dbf32349c9"/>
+					<textFieldExpression><![CDATA[$F{familiar_TELETRAB_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="336" y="0" width="12" height="15" uuid="5ba06e7a-d6f8-4c04-bc85-61745f26b363"/>
+					<textFieldExpression><![CDATA[$F{familiar_TELECEL_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="348" y="0" width="12" height="15" uuid="c93eeb9a-7db0-4099-b786-bcdf022f5bbe"/>
+					<textFieldExpression><![CDATA[$F{familiar_FECHNACI_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="360" y="0" width="12" height="15" uuid="027026bf-63f6-4efe-aa21-a91c591c47bd"/>
+					<textFieldExpression><![CDATA[$F{familiar_ESTA_FAMI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="372" y="0" width="12" height="15" uuid="f418a933-d8dd-4fc5-ad8d-4cdb031693f3"/>
+					<textFieldExpression><![CDATA[$F{luganaci_NOM_LUGANACI}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="384" y="0" width="12" height="15" uuid="a829b1b5-5ddf-49da-8437-4c7902016468"/>
+					<textFieldExpression><![CDATA[$F{acudientes_1NOM_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="396" y="0" width="12" height="15" uuid="c228012a-cf64-4023-a006-8ecabb3298fb"/>
+					<textFieldExpression><![CDATA[$F{acudientes_2NOM_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="408" y="0" width="12" height="15" uuid="262e3ed3-c24b-4788-8677-89693b1b4eac"/>
+					<textFieldExpression><![CDATA[$F{acudientes_1APEL_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="420" y="0" width="12" height="15" uuid="579a603e-fd97-4a48-81a0-0a1a76a3c968"/>
+					<textFieldExpression><![CDATA[$F{acudientes_2APEL_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="432" y="0" width="12" height="15" uuid="7e2e831c-c54d-4460-af3b-576511b69337"/>
+					<textFieldExpression><![CDATA[$F{acudientes_NUMDOCU_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="444" y="0" width="12" height="15" uuid="7304b3e9-defa-42f0-a628-c243370ddcb7"/>
+					<textFieldExpression><![CDATA[$F{acudientes_TELE_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="456" y="0" width="12" height="15" uuid="6f63428d-9373-4e39-8719-ad02623c0151"/>
+					<textFieldExpression><![CDATA[$F{acudientes_DIREC_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="468" y="0" width="12" height="15" uuid="acd0dc1b-5d5d-4839-bccc-05eedcbaa5fd"/>
+					<textFieldExpression><![CDATA[$F{acudientes_ESTADOAUTO_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="480" y="0" width="12" height="15" uuid="1aee6cad-1dda-49da-ab74-aede01953241"/>
+					<textFieldExpression><![CDATA[$F{acudientes_FECHNACI_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="492" y="0" width="12" height="15" uuid="52f094db-5440-4c50-a2ac-ddd5859ea6ab"/>
+					<textFieldExpression><![CDATA[$F{acudientes_PARENT_ACUD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="504" y="0" width="12" height="15" uuid="dcc4504a-933b-4a7d-9440-a7cea4a97682"/>
+					<textFieldExpression><![CDATA[$F{acudientes_ESTA_ACUD}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="eaad172a-23e6-4492-9337-9c0666a004e7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="51a45f02-fb47-441c-9bef-c5177516eb1a"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="f4500491-e2bc-4850-9f22-b1a03511205e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="62fd1051-43d0-4e03-92c8-ea1772d3b968"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="e66a2d3f-1933-46e4-b935-b9d64a87f60a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

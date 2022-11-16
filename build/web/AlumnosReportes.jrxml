@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6013cdbb-82fc-4e8b-b0b5-0e02fe8348ac">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     alumno.`1NOM_ALUM` AS alumno_1NOM_ALUM,
+     alumno.`2NOM_ALUM` AS alumno_2NOM_ALUM,
+     alumno.`1APEL_ALUM` AS alumno_1APEL_ALUM,
+     alumno.`2APEL_ALUM` AS alumno_2APEL_ALUM,
+     alumno.`NUIP_ALUM` AS alumno_NUIP_ALUM,
+     alumno.`FECHNACI_ALUM` AS alumno_FECHNACI_ALUM,
+     alumno.`TELEFIJO_ALUM` AS alumno_TELEFIJO_ALUM,
+     alumno.`TELECELU_ALUM` AS alumno_TELECELU_ALUM,
+     alumno.`ESTA_ALUMN` AS alumno_ESTA_ALUMN,
+     luganaci.`NOM_LUGANACI` AS luganaci_NOM_LUGANACI,
+     alumno.`DIREC_ALUM` AS alumno_DIREC_ALUM,
+     eps.`NOM_EPS` AS eps_NOM_EPS
+FROM
+     `eps` eps INNER JOIN `alumno` alumno ON eps.`ID_EPS` = alumno.`ID_EPS`
+     INNER JOIN `luganaci` luganaci ON alumno.`ID_LUGANACI` = luganaci.`ID_LUGANACI`]]>
+	</queryString>
+	<field name="alumno_1NOM_ALUM" class="java.lang.String"/>
+	<field name="alumno_2NOM_ALUM" class="java.lang.String"/>
+	<field name="alumno_1APEL_ALUM" class="java.lang.String"/>
+	<field name="alumno_2APEL_ALUM" class="java.lang.String"/>
+	<field name="alumno_NUIP_ALUM" class="java.lang.Integer"/>
+	<field name="alumno_FECHNACI_ALUM" class="java.sql.Date"/>
+	<field name="alumno_TELEFIJO_ALUM" class="java.lang.String"/>
+	<field name="alumno_TELECELU_ALUM" class="java.lang.String"/>
+	<field name="alumno_ESTA_ALUMN" class="java.lang.String"/>
+	<field name="luganaci_NOM_LUGANACI" class="java.lang.String"/>
+	<field name="alumno_DIREC_ALUM" class="java.lang.String"/>
+	<field name="eps_NOM_EPS" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="164" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="131" y="87" width="671" height="65" forecolor="#F9D39E" backcolor="#F9D39E" uuid="801c1dbd-d25c-4a22-a8ca-644bcbda865b"/>
+				<staticText>
+					<reportElement x="210" y="30" width="263" height="19" uuid="4795ad97-1c47-4d57-98be-e88c53554f5e"/>
+					<textElement textAlignment="Center">
+						<font fontName="Corbel Light" size="14"/>
+					</textElement>
+					<text><![CDATA[Alumnos registrados en el sistema]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="131" y="-2" width="671" height="89" forecolor="#88530A" backcolor="#AB690D" uuid="59968148-3c5e-446f-af19-4048abf19c3b"/>
+				<image>
+					<reportElement x="184" y="1" width="405" height="88" uuid="efa9f74d-bb0e-48c3-8b6f-c8825d25e983"/>
+					<imageExpression><![CDATA["./assets/jardin/logito.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement style="Title" x="2" y="0" width="199" height="22" forecolor="#FFFFFF" uuid="4036afa6-f511-498d-9b20-12cc12b17f31"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Franklin Gothic Medium" size="14" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Gestor de Matriculas]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement style="SubTitle" x="343" y="87" width="263" height="22" forecolor="#FFFFFF" uuid="1b7a9815-f86d-4794-9557-0619a602218a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Medium" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Listado de Alumnos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="11" y="0" width="145" height="152" uuid="55f8024a-c75f-4341-8823-e112e274ec2b"/>
+				<imageExpression><![CDATA["./assets/Icon.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="656" y="0" width="144" height="20" forecolor="#FFFFFF" uuid="e781d139-84ed-44ba-b577-5bbc11a953a8"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="cf63a6d3-3781-4b67-ae44-c409a54f98f6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="105" height="15" forecolor="#736343" uuid="10c92a0b-4cca-4a0b-912e-bacd1abae8f7"/>
+				<text><![CDATA[ Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="102" y="1" width="120" height="15" forecolor="#736343" uuid="4909ee81-5252-4b34-be50-8c91b99efbdd"/>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="1" width="80" height="15" forecolor="#736343" uuid="aecadf85-85ac-496c-8c65-823fdd7f9240"/>
+				<text><![CDATA[Nuip]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="302" y="0" width="120" height="15" forecolor="#736343" uuid="24eaad64-4818-45ff-a004-46877fe3a021"/>
+				<text><![CDATA[Fecha de nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="422" y="1" width="82" height="15" forecolor="#736343" uuid="2f1dcf11-8cf8-4446-9cb4-be29f5623282"/>
+				<text><![CDATA[ Dirrecion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="504" y="1" width="63" height="15" forecolor="#736343" uuid="f5b397b1-e13c-45d9-b2eb-67599e311e44"/>
+				<text><![CDATA[Tel. Fijo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="564" y="1" width="72" height="15" forecolor="#736343" uuid="5f93f56f-450f-4bcd-b48b-97468afab493"/>
+				<text><![CDATA[Tel. Celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="752" y="0" width="49" height="15" forecolor="#736343" uuid="712b2f99-5a00-4022-a533-dac418be7508"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="682" y="1" width="70" height="15" forecolor="#736343" uuid="75b2f583-213f-4e7f-bfae-2af4ade41408"/>
+				<text><![CDATA[Eps]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="636" y="1" width="46" height="15" forecolor="#736343" uuid="357f44b1-c21c-49bf-a48b-0729c4e07fb0"/>
+				<text><![CDATA[Lugar de nacimiento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="12dac21b-b0dc-4a57-bb65-f8bb37f0a551"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="57" height="15" uuid="e8cc01cd-c957-449c-be98-cc128c8ec86e"/>
+					<textFieldExpression><![CDATA[$F{alumno_1NOM_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="57" y="0" width="48" height="15" uuid="a3a9d657-6d9f-423f-9fc6-db09bbc94cd5"/>
+					<textFieldExpression><![CDATA[$F{alumno_2NOM_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="102" y="0" width="60" height="15" uuid="490be426-7158-4f52-b7c7-415ce6ac3e7a"/>
+					<textFieldExpression><![CDATA[$F{alumno_1APEL_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="162" y="0" width="60" height="15" uuid="bd6c5403-d250-43f6-a0ab-3dad2e8ef4ff"/>
+					<textFieldExpression><![CDATA[$F{alumno_2APEL_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="222" y="0" width="80" height="15" uuid="3bd5a79e-ecd5-4cb9-ad04-6a26780c8875"/>
+					<textFieldExpression><![CDATA[$F{alumno_NUIP_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="302" y="0" width="120" height="15" uuid="47837b94-0906-4808-9c14-2e0fdd7092ba"/>
+					<textFieldExpression><![CDATA[$F{alumno_FECHNACI_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="422" y="0" width="82" height="15" uuid="928ba8a7-bd4b-4c1f-a8e6-b56dccf5947d"/>
+					<textFieldExpression><![CDATA[$F{alumno_DIREC_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="504" y="0" width="63" height="15" uuid="f9b175e1-ae67-45ca-8ee8-188189af872f"/>
+					<textFieldExpression><![CDATA[$F{alumno_TELEFIJO_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="564" y="0" width="72" height="15" uuid="4f91d968-1409-47dc-aece-654d06008aad"/>
+					<textFieldExpression><![CDATA[$F{alumno_TELECELU_ALUM}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="752" y="0" width="50" height="15" uuid="a0b3b8c2-2c64-4288-99d7-0b62c59c5037"/>
+					<textFieldExpression><![CDATA[$F{alumno_ESTA_ALUMN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="682" y="0" width="70" height="15" uuid="bcdef0a7-46c9-4325-822d-ff9cd2132f0c"/>
+					<textFieldExpression><![CDATA[$F{eps_NOM_EPS}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="636" y="0" width="46" height="15" uuid="a075fd1a-1315-47ed-86f9-8303e7f96fa1"/>
+					<textFieldExpression><![CDATA[$F{luganaci_NOM_LUGANACI}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="12" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="9f3a0063-353d-4c6a-a60d-db5fa8a8bd72"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="60" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-11" y="8" width="802" height="48" forecolor="#E5CEAE" backcolor="#AB690D" uuid="3c39ca5c-a865-48d0-8f0b-0541e43dad90"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="752" y="14" width="40" height="20" forecolor="#FFFFFF" uuid="e707da51-7b9c-4c7f-b41c-5d2e81c00cd5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="672" y="14" width="80" height="20" forecolor="#FFFFFF" uuid="08ee8641-1db1-46c0-be74-90ad4f72ba40"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="52" y="4" width="345" height="40" uuid="b1236717-4ebf-49cb-80e0-32ed1d686ca6"/>
+					<imageExpression><![CDATA["./assets/jardin/logofooter.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

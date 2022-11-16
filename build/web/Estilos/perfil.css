@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-sep-2022, 23:28:40
+    Author     : yoang
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.formulario{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+   
+}
+
+.btn{
+    display: flex;
+    justify-content: center;  
+}
+
+.btn button{
+    width: 50%;
+}
+

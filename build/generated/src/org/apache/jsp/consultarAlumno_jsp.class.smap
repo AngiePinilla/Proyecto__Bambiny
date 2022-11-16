@@ -1,0 +1,22 @@
+SMAP
+consultarAlumno_jsp.java
+JSP
+*S JSP
+*F
++ 0 consultarAlumno.jsp
+consultarAlumno.jsp
+*L
+5,26:47
+31,2:73,3
+33:79
+34,3:80,3
+37,29:89
+66,7:119
+72,3:126
+75,19:129,3
+94,3:186
+97:189,3
+98,5:192
+103:197,3
+104,16:200
+*E
