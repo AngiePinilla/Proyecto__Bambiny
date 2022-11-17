@@ -34,7 +34,7 @@ public class AcudienteControlador2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         // 1. Recibir datos de las vistas
         String ID_ACUD = request.getParameter("textID_acud");
         String ID_ALUM = request.getParameter("textId_alum");

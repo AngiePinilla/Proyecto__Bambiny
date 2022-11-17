@@ -12,36 +12,56 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="Estilos/generales.css" rel="stylesheet" type="text/css"/>
+       <!----======== CSS ======== -->
+        <link href="Estilos/form1.css" rel="stylesheet" type="text/css"/>
 
-        <link rel="stylesheet" href="Estilos/index.css">
+        <!----===== Iconscout CSS ===== -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
         <title>Registrar</title>
 
     </head>
     <body>   
         <%@include file="NavBar.jsp" %>
         <section class="home">
-            <div class="login-box">
-                <h2>Registrar Usuario</h2>
+            <div class="contenido">
+            
+                <div class="container">
+                <header>Registrar Usuario</header>
                 <form method="post" action="Usuario">
-                    <div class="user-box">
-                        <input type="text" name="textLogin" required="">
-                        <label>Usuario</label>
-                    </div>
-                    <div class="user-box">
-                        <input type="password" name="textPassword" required="">
-                        <label>Contraseña</label>
-                    </div>
-                    <div class="user-box">
-                        <button>Registrar</button> <br>
-                        <input type="hidden" value="1" name="opcion"><br>
-                    </div>
-                </form>
-                <%                if (request.getAttribute("mensajeError") != null) { %>
-                ${mensajeError}
+                    <div class="form first">
+                        <div class="details personal">
+                            <span class="title">Datos Personales</span>
 
-                <%} else {%>
-                ${mensajeExito}        
-                <%}%>
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Correo Electronico</label>
+                                    <input type="email" name="textLogin" placeholder="Corro@email.com" >
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Contraseña</label>
+                                    <input type="password" name="textPassword" placeholder="******" >
+                                </div>
+                                
+                                <div class="input-field">
+                                    
+                                    <input type="hidden" name="textPassword" placeholder="******" >
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button class="sumbit">
+                            <span class="btnText">Enviar</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                        <input type="hidden" value="1" name="opcion">
+                    </div> 
+                </form>
+            </div>
+                
             </div>
         </section>
     </body>

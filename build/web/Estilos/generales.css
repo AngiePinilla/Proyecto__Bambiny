@@ -28,10 +28,10 @@ and open the template in the editor.
 }
 
 .bn60 {
-    background-color: #f18e8e;
+background-color: #8bc4d3;
     color: #ffffff;
     font-size: 1em;
-    font-weight: 600;
+    /* font-weight: 600; */
     position: relative;
     outline: none;
     border-radius: 0.6em;
@@ -45,7 +45,7 @@ and open the template in the editor.
 }
 
 .bn61{
-    background-color: #ff2727;
+    background-color: #ff6f6f;
     color: #ffffff;
     font-size: 1em;
     /* font-weight: 600; */

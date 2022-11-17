@@ -130,9 +130,10 @@ public class FamiliarDAO extends ConexionBd implements Crud {
         try {
 
             conexion = this.obtenerConexion();
-            sql = "SELECT * FROM `familiar` WHERE NUMDOCU_FAMI=?;";
+            sql = "SELECT * FROM familiar WHERE NUMDOCU_FAMI=?;";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, numdocu_fami);
+            
             mensajero = puente.executeQuery();
 
             while (mensajero.next()) {
@@ -142,13 +143,7 @@ public class FamiliarDAO extends ConexionBd implements Crud {
 
         } catch (SQLException e) {
             Logger.getLogger(FamiliarDAO.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            try {
-                this.deneterConexion();
-            } catch (SQLException e) {
-                Logger.getLogger(FamiliarDAO.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
+        } 
 
         return famiVO;
     }

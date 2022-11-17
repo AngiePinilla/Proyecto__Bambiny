@@ -27,6 +27,57 @@ and open the template in the editor.
     padding-right: 10px;
 }
 
+.bn60 {
+    background-color: #f18e8e;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 600;
+    position: relative;
+    outline: none;
+    border-radius: 0.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2.5em;
+    border: none;
+    padding: 10px;
+}
+
+.bn61{
+    background-color: #ff2727;
+    color: #ffffff;
+    font-size: 1em;
+    /* font-weight: 600; */
+    position: relative;
+    outline: none;
+    border-radius: 0.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2.5em;
+    border: none;
+    padding: 10px;
+}
+
+.bn62{
+    background-color: #7ddb8b;
+    color: #ffffff;
+    font-size: 1em;
+    /* font-weight: 600; */
+    position: relative;
+    outline: none;
+    border-radius: 0.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2.5em;
+    border: none;
+    padding: 10px;
+}
+
 .btn-est2{
      border: 2px solid palevioletred;
     border-radius: 8px;

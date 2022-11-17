@@ -125,7 +125,7 @@
                     <%} else if (rolVO.getRolTiPo().equals("alumno")) {
                     %>
 
-                    <li class="nav-link">
+                    <li class="nav-links">
                         <a href="alumno.jsp">
                             <i class="bx bx-home-alt icon" ></i>
                             <span class="text nav-text">Inicio</span>

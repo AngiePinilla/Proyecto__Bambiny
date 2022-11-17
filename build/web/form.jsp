@@ -37,40 +37,25 @@
             <%}%>
             <div class="container">
                 <header>Registration</header>
-                <form method="post" action="Document">
+                <form method="post" action="Usuario">
                     <div class="form first">
                         <div class="details personal">
                             <span class="title">Datos Personales</span>
 
                             <div class="fields">
                                 <div class="input-field">
-                                    <label>Primer Nombre</label>
-                                    <input type="text" name="textNom_acud1" placeholder="Escribe tu nombre" >
+                                    <label>Correo Electronico</label>
+                                    <input type="email" name="textLogin" placeholder="Corro@email.com" >
                                 </div>
 
                                 <div class="input-field">
-                                    <label>Primer Apellido</label>
-                                    <input type="text" name="textApel_acud1" placeholder="Escribe tu apellido" >
+                                    <label>Contraseña</label>
+                                    <input type="password" name="textPassword" placeholder="******" >
                                 </div>
 
 
 
-                                <div class="input-field">
-                                    <label>Tipo de documento</label>
-                                    <select name="texttipo_docu">
-                                        <option>Seleccione</option>
-                                        <option value="Registro Civil">Registro Civil</option>
-                                        <option value="Carnet Vacuna">Carnet de Vacunas</option>
-                                        <option value="Certificado EPS">Certificado EPS</option>
-                                        <option value="Vacuna Covid">Vacuna Covid</option>
-                                        <option value="Cedula Padres">Cedula Padres</option>
-                                    </select>
-                                </div>
-
-                                <div class="input-field">
-                                    <label>Cargar Archivo</label>
-                                    <input type="file" name="textarchivo_docu"  >
-                                </div>
+                                
 
 
 

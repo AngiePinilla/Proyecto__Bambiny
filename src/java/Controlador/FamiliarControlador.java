@@ -51,7 +51,7 @@ public class FamiliarControlador extends HttpServlet {
             String telecel_fami = request.getParameter("texttelecel_fami"); //cambiar y hacer los mismo que con eps
             String fechnaci_fami = request.getParameter("textfechnaci_fami");
             String esta_fami = request.getParameter("textesta_fami");
-            
+
             String id_alum = request.getParameter("textid_alum");
 
             //String usuLogin = request.getParameter("textUsuario");
@@ -60,23 +60,31 @@ public class FamiliarControlador extends HttpServlet {
 
             //2. el VO tiene los datos seguros
             familiarVO famivo = new familiarVO(id_fami, nom1_fami, nom2_fami, apel1_fami, apel2_fami, parent_fami, numdocu_fami, ocupac_fami, lugatrab_fami, teletrab_fami, telecel_fami, fechnaci_fami, esta_fami);
-           
+
             AlumFamiVO alVO = new AlumFamiVO(id_alum, id_fami);
             //3. ¿Quién hace las operaciones? DAO
             FamiliarDAO famidao = new FamiliarDAO(famivo);
-            
-             FamiliarDAO fami = new FamiliarDAO(alVO);
+
+            FamiliarDAO fami = new FamiliarDAO(alVO);
 
             //4. dministrar Operaciones
             switch (opcion) {
 
                 case 1:
-                   
-                    
-                    if (famidao.agregarRegistro() ) {
-                        request.setAttribute("MensajeExito", "El familiar se registro correctamente");
+
+                    if (famidao.agregarRegistro()) {
+                        famivo = famidao.consultarDatos(numdocu_fami);
+                        if (famivo != null) {
+                            famidao.agregarFami();
+                            request.setAttribute("MensajeExito", "El familiar se registro correctamente");
+                            request.getRequestDispatcher("familiar.jsp").forward(request, response);
+                        } else {
+                            request.setAttribute("MensajeError", "El familiar no se registro correctamente");
+                            request.getRequestDispatcher("familiar.jsp").forward(request, response);
+                        }
                     } else {
                         request.setAttribute("MensajeError", "El familiar no se registro correctamente");
+                        request.getRequestDispatcher("familiar.jsp").forward(request, response);
                     }
                     request.getRequestDispatcher("familiar.jsp").forward(request, response);
                     break;
@@ -89,7 +97,7 @@ public class FamiliarControlador extends HttpServlet {
                     }
                     request.getRequestDispatcher("actuFamiliar.jsp").forward(request, response);
                     break;
-                    
+
                 case 3:
                     famivo = famidao.consultarDatos(numdocu_fami);
 

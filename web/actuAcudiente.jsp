@@ -106,7 +106,7 @@
                                 <div class="input-field">
                                     <label>Parentesco</label>
                                     <select name="textEstadoauto_acud">
-                                        <option value="<%= acuVO.getESTADOAUTO_ACUD() %>">Autorizado</option>
+                                        <option value="Autorizado">Autorizado</option>
                                         <option value="No autorizado">No Autorizado</option>
                                     </select>
                                     
