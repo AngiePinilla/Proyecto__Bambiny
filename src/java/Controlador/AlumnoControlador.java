@@ -101,10 +101,9 @@ public class AlumnoControlador extends HttpServlet {
                     request.setAttribute("mensajeExito", "el alumno se actualizo correctamente");
                     request.getRequestDispatcher("alumno.jsp").forward(request, response);
                     
-                } else {request.getRequestDispatcher("actuAlumno.jsp").forward(request, response);
-                    request.setAttribute("mensajeError", "el alumno NO se actualizo correctamente");
-                    request.getRequestDispatcher("actuAlumno.jsp").forward(request, response);
-                    
+                } else {
+                    request.setAttribute("MensajeError", "el alumno NO se actualizo correctamente");
+                     request.getRequestDispatcher("alumno.jsp").forward(request, response);
                 }
                 
                 break;

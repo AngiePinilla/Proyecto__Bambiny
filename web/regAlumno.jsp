@@ -26,9 +26,16 @@
         <title>Registrar Alumno</title>
     </head>
     <body>
-    
+            
         <%@include file="NavBar.jsp" %>
-        <% 
+        <%            String id_usua = rolVO.getRolId();
+
+            AlumnoVO alumVO = new AlumnoVO();
+            AlumnoDAO alumDAO = new AlumnoDAO(alumVO);
+
+            alumVO = alumDAO.consultarAlumno(id_usua);
+
+            String id_alumn = alumVO.getId_alum();
 
             for (int i = 0; i < listaDatos.size(); i++) {
 
@@ -196,7 +203,7 @@
                             </div>
 
 
-                            <input type="hidden" name="textid_usua" value="<%=rolVO.getRolId()%>">
+                            <input type="hidden" name="textid_alum" value="<%= id_alumn %>">
                             <button class="sumbit">
                                 <span class="btnText">Enviar</span>
                                 <i class="uil uil-navigator"></i>

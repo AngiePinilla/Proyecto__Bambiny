@@ -34,63 +34,76 @@
 
         %>
         <section class="home">
-            <%            if (request.getAttribute("mensajeError") != null) {%>
+            <div class="contenido">
+                <br><br>
+                <h1>Tus Acudientes</h1>
 
-            ${mensajeError}
-            <%} else {%>
-            ${mensajeExito}
-            <%}
-            %>
-            <a href="alumno.jsp">Volver</a>
-            <br>
-            <h2>Femiliar</h2>
-            <br><br>
-            <input type="text" value="<%= id_alumn%>" > 
-            <form method="post" action="Familiar">
+                <%            if (request.getAttribute("mensajeError") != null) {%>
 
-                <table id="example" class="table table-striped">
-                    <thead>
+                ${mensajeError}
+                <%} else {%>
+                ${mensajeExito}
+                <%}
+                %>
+                <br>
+                <form class="acu" method="post" action="Familiar">
+
+                    <table id="example" class="table table-striped">
+                        <thead>
+                            <tr>
+                                                               
+                                <th>Nombre</th>
+                                <th>Apellido</th>                                
+                                <th>Numero documento</th>
+                                <th>Parentesco</th>
+                                <th>Celular</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Ocupacion</th>
+                                <th>Lug. Trabajo</th>
+                                <th>Telefono Trabajo</th>
+                                <th>opciones</th>
+                            </tr>
+                        </thead>
+                        <%
+                            familiarVO FamiVO = new familiarVO();
+                            FamiliarDAO FamiDAO = new FamiliarDAO();
+
+                            ArrayList<familiarVO> ListarFami = FamiDAO.listarFami(id_alumn);
+                            for (int i = 0; i < ListarFami.size(); i++) {
+                                FamiVO = ListarFami.get(i);
+
+                        %>
+
                         <tr>
-                            <th>id</th>
-                            <th>Nombre</th>
-                            <th>Apellidp</th>
-                            <th>Num documento</th>                    
+                            
+                            <td><%= FamiVO.getNom1_fami() %> <%= FamiVO.getNom2_fami() %></td> 
+                            <td><%= FamiVO.getApel1_fami() %> <%= FamiVO.getApel2_fami() %></td> 
+                            <td><%= FamiVO.getNumdocu_fami() %></td> 
+                            <td><%= FamiVO.getParent_fami() %></td> 
+                            <td><%= FamiVO.getTelecel_fami() %></td> 
+                            <td><%= FamiVO.getFechnaci_fami() %></td> 
+                            <td><%= FamiVO.getOcupac_fami() %></td> 
+                            <td><%= FamiVO.getLugatrab_fami() %></td> 
+                            <td><%= FamiVO.getTeletrab_fami() %></td> 
+
+                            <td>
+                                <form method="post" action="Familiar">
+
+                                    <button class="bn60" name="textid_fami" value="<%= FamiVO.getId_fami() %>" >Actualizar</button>
+                                    <input name="opcion" value="3" type="hidden">
+
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <%
-                        familiarVO famivo = new familiarVO();
-
-                        FamiliarDAO famiDAO = new FamiliarDAO();
-
-                        ArrayList<familiarVO> listarfa = famiDAO.listarFami(id_alumn);
-                        for (int i = 0; i < listarfa.size(); i++) {
-                            famivo = listarfa.get(i);
-
-
-                    %>
-
-                    <tr>
-                        <td><%= famivo.getId_fami()%></td>
-
-
-
-                        <td>
-                            <form method="post" action="Document">
-
-
-                                <button name="textid_docu" value="<%= famivo.getId_fami()%>" >Actualizar</button>
-
-                                <input type="hidden" value="3" name="opcion"> 
-                            </form>
-                        </td>
-                    </tr>
-                    <%}%>
+                        <%}%>
 
 
 
 
-                </table>
-            </form>
+                    </table>
+                </form>
+
+            </div>
         </section>
                     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     

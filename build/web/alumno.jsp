@@ -41,7 +41,7 @@
                 <a href="Acudiente.jsp">Registrar Acudiente</a><br>
                 <a href="documento.jsp">Registrar documento</a><br>
                 <hr>
-
+           
                 <form action="Alumno" method="post">
 
                     <button name="textid_alum" value="<%= id_alumn%>"  >Actualizar Alumno</button>
@@ -55,9 +55,9 @@
                 <a href="listarDocumentos.jsp">actualizar documento</a><br>
                 <a href="ListaActAcud.jsp">actualizar Acudiente</a><br>
                 <a href="listarFamiliar.jsp">actualizar Familiar</a><br>
-                
-                <a href="form.jsp">form </a><br>
 
+                <a href="form.jsp">form </a><br>
+                <a href="Archivo.jsp">ARCHIVO </a><br>
                 <br>
 
                 <br>

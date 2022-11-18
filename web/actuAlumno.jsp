@@ -24,18 +24,23 @@
     </head>
     <body>
         <%@include file="NavBar.jsp" %>
-        <% if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
 
-            <%} else {%>
-            ${MensajeExito}        
-            <%}%>
-            
-        <%            AlumnoVO aluVO = (AlumnoVO) request.getAttribute("datosConsultados");
-            if (aluVO != null) {
-        %>
+
+
 
         <section class="home">
+
+            <%
+                if (request.getAttribute("mensajeError") != null) { %>
+            ${mensajeError}
+
+            <%} else {%>
+            ${mensajeExito}        
+            <%}%>
+
+            <%            AlumnoVO aluVO = (AlumnoVO) request.getAttribute("datosConsultados");
+                if (aluVO != null) {
+            %>
             
             <div class="container">
                 <header>Registration</header>
@@ -188,13 +193,13 @@
                             </div>
 
 
-                            <input type="hidden" value="3" name="opcion">
+
                             <input type="hidden" name="textid_alum" value="<%= aluVO.getId_alum()%>">
                             <button class="sumbit">
                                 <span class="btnText">Enviar</span>
                                 <i class="uil uil-navigator"></i>
                             </button>
-                            <input type="hidden" value="1" name="opcion">
+                            <input type="hidden" value="3" name="opcion">
                         </div> 
 
                     </div>

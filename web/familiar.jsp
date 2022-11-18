@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="ModeloVO.familiarVO"%>
-<%@page import="ModeloVO.AlumFamiVO"%>
 <%@page import="ModeloDAO.RolDAO"%>
 <%@page import="ModeloVO.RolVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,12 +23,31 @@
     <body>
     
          <%@include file="NavBar.jsp" %>
+         <%
+        
+        String id_usua = rolVO.getRolId();
+
+        AlumnoVO alumVO = new AlumnoVO();
+        AlumnoDAO alumDAO = new AlumnoDAO(alumVO);
+        
+        alumVO = alumDAO.consultarAlumno(id_usua);
+        
+        String id_alumn = alumVO.getId_alum();
+
+    %>
         <section class="home">
             <% if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
 
             <%} else {%>
             ${MensajeExito}        
+            <%}%>
+            
+            <% if (request.getAttribute("MensajeErrorConsulta") != null) { %>
+            ${MensajeError}
+
+            <%} else {%>
+            ${MensajeConsulta}        
             <%}%>
             <div class="container">
                 <header>Registration</header>
@@ -120,7 +138,7 @@
                         
 
 
-
+                            <input type="hidden" name="textid_alum" value="<%= id_alumn %>">
                             <button class="sumbit">
                                 <span class="btnText">Enviar</span>
                                 <i class="uil uil-navigator"></i>

@@ -62,7 +62,7 @@
                                 usuVO = listarUsuarios.get(i);
                         %>
                         <tr>
-                            <td><%=usuVO.getUsuLogin()%></td>
+                            <td><%=usuVO.getCorreo_usua() %></td>
                             <td><%=usuVO.getEstado()%></td>
 
                             <td>

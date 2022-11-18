@@ -24,6 +24,20 @@
     </head>
     <body>   
         <%@include file="NavBar.jsp" %>
+         <%
+                if (request.getAttribute("mensajeError") != null) { %>
+            
+                <h5 class="msgError" >${mensajeError}</h5>  
+
+            <%} else {%>
+            <h5 class="msgSucces" >${mensajeExito}</h5>  
+            <script>
+                alert("Hello world!");
+                window.swal("holi");
+                swal("${mensajeExito}");
+                
+            </script>
+            <%}%>
         <section class="home">
             <div class="contenido">
             

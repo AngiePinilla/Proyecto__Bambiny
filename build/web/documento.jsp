@@ -71,6 +71,12 @@
                                     <input type="file" name="textarchivo_docu"  >
                                 </div>
                                 
+                                
+                                
+                                
+                                
+                                
+                                
                                 <div class="input-field">
                                  <input type="hidden" name="textarchivo_docu"  >
                                 </div>

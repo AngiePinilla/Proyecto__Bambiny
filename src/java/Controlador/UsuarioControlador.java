@@ -210,6 +210,11 @@ public class UsuarioControlador extends HttpServlet {
                     String rol = request.getParameter("rol");
                     
                     if (rolDAO.agregarRegistro(rol, usuarioID)) {
+                        if (rol.equals("2")) {
+                            AlumnoVO alumVO = new AlumnoVO();
+                            AlumnoDAO alumDAO = new AlumnoDAO(alumVO);
+                            alumDAO.agregarAlumno(usuarioID);
+                        }
                     request.setAttribute("mensajeExito", "se le asigno el rol correoctamente al usuario");
                 } else {
                     request.setAttribute("mensajeError", "hubo un problema por favor intentelo de nuevo");
@@ -246,6 +251,8 @@ public class UsuarioControlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
     }
 
     /**

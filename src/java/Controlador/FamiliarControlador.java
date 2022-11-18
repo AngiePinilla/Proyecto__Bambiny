@@ -6,7 +6,6 @@
 package Controlador;
 
 import ModeloDAO.FamiliarDAO;
-import ModeloVO.AlumFamiVO;
 import ModeloVO.familiarVO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,6 +38,7 @@ public class FamiliarControlador extends HttpServlet {
 
             //1. recibir datos de las vistas
             String id_fami = request.getParameter("textid_fami");
+            String id_alum = request.getParameter("textid_alum");
             String nom1_fami = request.getParameter("textnom1_fami");
             String nom2_fami = request.getParameter("textnom2_fami");
             String apel1_fami = request.getParameter("textapel1_fami");
@@ -52,20 +52,18 @@ public class FamiliarControlador extends HttpServlet {
             String fechnaci_fami = request.getParameter("textfechnaci_fami");
             String esta_fami = request.getParameter("textesta_fami");
 
-            String id_alum = request.getParameter("textid_alum");
-
             //String usuLogin = request.getParameter("textUsuario");
             //String usuPassword = request.getParameter("textClave");
             int opcion = Integer.parseInt(request.getParameter("opcion"));
 
             //2. el VO tiene los datos seguros
-            familiarVO famivo = new familiarVO(id_fami, nom1_fami, nom2_fami, apel1_fami, apel2_fami, parent_fami, numdocu_fami, ocupac_fami, lugatrab_fami, teletrab_fami, telecel_fami, fechnaci_fami, esta_fami);
+            familiarVO famivo = new familiarVO(id_fami, id_alum, nom1_fami, nom2_fami, apel1_fami, apel2_fami, parent_fami, numdocu_fami, ocupac_fami, lugatrab_fami, teletrab_fami, telecel_fami, fechnaci_fami, esta_fami);
 
-            AlumFamiVO alVO = new AlumFamiVO(id_alum, id_fami);
+         
             //3. ¿Quién hace las operaciones? DAO
             FamiliarDAO famidao = new FamiliarDAO(famivo);
 
-            FamiliarDAO fami = new FamiliarDAO(alVO);
+           
 
             //4. dministrar Operaciones
             switch (opcion) {
@@ -73,15 +71,9 @@ public class FamiliarControlador extends HttpServlet {
                 case 1:
 
                     if (famidao.agregarRegistro()) {
-                        famivo = famidao.consultarDatos(numdocu_fami);
-                        if (famivo != null) {
-                            famidao.agregarFami();
-                            request.setAttribute("MensajeExito", "El familiar se registro correctamente");
-                            request.getRequestDispatcher("familiar.jsp").forward(request, response);
-                        } else {
-                            request.setAttribute("MensajeError", "El familiar no se registro correctamente");
-                            request.getRequestDispatcher("familiar.jsp").forward(request, response);
-                        }
+                        
+                        request.setAttribute("MensajeExito", "El familiar se registro correctamente");
+
                     } else {
                         request.setAttribute("MensajeError", "El familiar no se registro correctamente");
                         request.getRequestDispatcher("familiar.jsp").forward(request, response);
@@ -92,23 +84,27 @@ public class FamiliarControlador extends HttpServlet {
                 case 2:
                     if (famidao.actualizarRegistro()) {
                         request.setAttribute("MensajeExito", "El usuario se actualizo correctamente.");
+                         request.getRequestDispatcher("listarFamiliar.jsp").forward(request, response);
+                        
                     } else {
                         request.setAttribute("MensajeError", "El usuario no se actualizo correctamente.");
+                        request.getRequestDispatcher("actuFamiliar.jsp").forward(request, response);
                     }
-                    request.getRequestDispatcher("actuFamiliar.jsp").forward(request, response);
+                    
                     break;
 
                 case 3:
-                    famivo = famidao.consultarDatos(numdocu_fami);
 
+                    famivo = famidao.consultarDatos(id_fami);
+                    
                     if (famivo != null) {
 
                         request.setAttribute("datosConsultados", famivo);
-                        request.getRequestDispatcher("familiar.jsp").forward(request, response);
+                        request.getRequestDispatcher("actuFamiliar.jsp").forward(request, response);
 
                     } else {
                         request.setAttribute("mensajeError", "la familiar no se pudo encontrar");
-                        request.getRequestDispatcher("familiar.jsp").forward(request, response);
+                        request.getRequestDispatcher("listarFamiliar.jsp").forward(request, response);
 
                     }
                     break;
